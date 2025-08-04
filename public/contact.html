@@ -1,427 +1,571 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - FreshVeggie Import & Export</title>
-    <meta name="description" content="Contact FreshVeggie for premium quality vegetables, fruits, and spices import & export worldwide">
-    <meta name="author" content="FreshVeggie">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us - Vanijya Global Exports</title>
+    <meta
+      name="description"
+      content="Contact Vanijya Global Exports for premium quality vegetables, fruits, and spices import & export worldwide"
+    />
+    <meta name="author" content="Vanijya Global Exports" />
+    <link rel="icon" type="image/x-icon" href="/images/favicon.png">
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Lucide Icons CDN -->
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-    
+
     <!-- Custom CSS for design tokens -->
     <style>
-        :root {
-            /* Theme colors (HSL values) */
-            --primary: 112 70% 35%;
-            --primary-bright: 112 75% 45%;
-            --secondary: 30 70% 55%;
-            --secondary-bright: 30 75% 65%;
-            --accent: 45 70% 50%;
-            --accent-bright: 45 75% 60%;
-            --muted: 210 40% 96.1%;
-            --muted-foreground: 215.4 16.3% 46.9%;
-            --background: 0 0% 100%;
-            --foreground: 222.2 84% 4.9%;
-        }
+      :root {
+        /* Theme colors (HSL values) */
+        --primary: 112 70% 35%;
+        --primary-bright: 112 75% 45%;
+        --secondary: 30 70% 55%;
+        --secondary-bright: 30 75% 65%;
+        --accent: 45 70% 50%;
+        --accent-bright: 45 75% 60%;
+        --muted: 210 40% 96.1%;
+        --muted-foreground: 215.4 16.3% 46.9%;
+        --background: 0 0% 100%;
+        --foreground: 222.2 84% 4.9%;
+      }
 
-        .dark {
-            --primary: 112 75% 45%;
-            --primary-bright: 112 80% 55%;
-            --secondary: 30 75% 65%;
-            --secondary-bright: 30 80% 75%;
-            --accent: 45 75% 60%;
-            --accent-bright: 45 80% 70%;
-            --background: 222.2 84% 4.9%;
-            --foreground: 210 40% 98%;
-        }
+      .dark {
+        --primary: 112 75% 45%;
+        --primary-bright: 112 80% 55%;
+        --secondary: 30 75% 65%;
+        --secondary-bright: 30 80% 75%;
+        --accent: 45 75% 60%;
+        --accent-bright: 45 80% 70%;
+        --background: 222.2 84% 4.9%;
+        --foreground: 210 40% 98%;
+      }
 
-        .bg-gradient-primary {
-            background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-bright)));
-        }
-        
-        .bg-gradient-secondary {
-            background: linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--secondary-bright)));
-        }
-        
-        .bg-gradient-accent {
-            background: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--accent-bright)));
-        }
-        
-        .bg-gradient-subtle {
-            background: linear-gradient(180deg, hsl(var(--background)), hsl(112 20% 97%));
-        }
-        
-        .text-primary { color: hsl(var(--primary)); }
-        .text-secondary { color: hsl(var(--secondary)); }
-        .text-accent { color: hsl(var(--accent)); }
-        .text-primary-bright { color: hsl(var(--primary-bright)); }
-        .text-secondary-bright { color: hsl(var(--secondary-bright)); }
-        .text-accent-bright { color: hsl(var(--accent-bright)); }
-        .text-muted-foreground { color: hsl(var(--muted-foreground)); }
-        .bg-primary { background-color: hsl(var(--primary)); }
-        .bg-muted { background-color: hsl(var(--muted)); }
-        .border-primary { border-color: hsl(var(--primary)); }
-        .border-primary-20 { border-color: hsl(var(--primary) / 0.2); }
-        .focus-border-primary:focus { border-color: hsl(var(--primary)); }
+      .bg-gradient-primary {
+        background: linear-gradient(
+          135deg,
+          hsl(var(--primary)),
+          hsl(var(--primary-bright))
+        );
+      }
 
-        .shadow-elegant {
-            box-shadow: 0 10px 30px -10px hsl(var(--primary) / 0.25);
-        }
-        
-        .animate-fade-in {
-            animation: fadeIn 0.6s ease-out;
-        }
-        
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+      .bg-gradient-secondary {
+        background: linear-gradient(
+          135deg,
+          hsl(var(--secondary)),
+          hsl(var(--secondary-bright))
+        );
+      }
 
-        .mobile-menu {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-        
-        .mobile-menu.open {
-            max-height: 300px;
-        }
+      .bg-gradient-accent {
+        background: linear-gradient(
+          135deg,
+          hsl(var(--accent)),
+          hsl(var(--accent-bright))
+        );
+      }
 
-        /* Form input styles */
-        .form-input {
-            padding: 0.75rem;
-            border: 1px solid hsl(var(--primary) / 0.2);
-            border-radius: 0.375rem;
-            width: 100%;
-            transition: border-color 0.2s ease;
-        }
+      .bg-gradient-subtle {
+        background: linear-gradient(
+          180deg,
+          hsl(var(--background)),
+          hsl(112 20% 97%)
+        );
+      }
 
-        .form-input:focus {
-            outline: none;
-            border-color: hsl(var(--primary));
-            box-shadow: 0 0 0 3px hsl(var(--primary) / 0.1);
-        }
+      .text-primary {
+        color: hsl(var(--primary));
+      }
+      .text-secondary {
+        color: hsl(var(--secondary));
+      }
+      .text-accent {
+        color: hsl(var(--accent));
+      }
+      .text-primary-bright {
+        color: hsl(var(--primary-bright));
+      }
+      .text-secondary-bright {
+        color: hsl(var(--secondary-bright));
+      }
+      .text-accent-bright {
+        color: hsl(var(--accent-bright));
+      }
+      .text-muted-foreground {
+        color: hsl(var(--muted-foreground));
+      }
+      .bg-primary {
+        background-color: hsl(var(--primary));
+      }
+      .bg-muted {
+        background-color: hsl(var(--muted));
+      }
+      .border-primary {
+        border-color: hsl(var(--primary));
+      }
+      .border-primary-20 {
+        border-color: hsl(var(--primary) / 0.2);
+      }
+      .focus-border-primary:focus {
+        border-color: hsl(var(--primary));
+      }
 
-        .form-textarea {
-            padding: 0.75rem;
-            border: 1px solid hsl(var(--primary) / 0.2);
-            border-radius: 0.375rem;
-            width: 100%;
-            min-height: 120px;
-            transition: border-color 0.2s ease;
-            resize: vertical;
-        }
+      .shadow-elegant {
+        box-shadow: 0 10px 30px -10px hsl(var(--primary) / 0.25);
+      }
 
-        .form-textarea:focus {
-            outline: none;
-            border-color: hsl(var(--primary));
-            box-shadow: 0 0 0 3px hsl(var(--primary) / 0.1);
+      .animate-fade-in {
+        animation: fadeIn 0.6s ease-out;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
         }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .mobile-menu {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+      }
+
+      .mobile-menu.open {
+        max-height: 300px;
+      }
+
+      /* Form input styles */
+      .form-input {
+        padding: 0.75rem;
+        border: 1px solid hsl(var(--primary) / 0.2);
+        border-radius: 0.375rem;
+        width: 100%;
+        transition: border-color 0.2s ease;
+      }
+
+      .form-input:focus {
+        outline: none;
+        border-color: hsl(var(--primary));
+        box-shadow: 0 0 0 3px hsl(var(--primary) / 0.1);
+      }
+
+      .form-textarea {
+        padding: 0.75rem;
+        border: 1px solid hsl(var(--primary) / 0.2);
+        border-radius: 0.375rem;
+        width: 100%;
+        min-height: 120px;
+        transition: border-color 0.2s ease;
+        resize: vertical;
+      }
+
+      .form-textarea:focus {
+        outline: none;
+        border-color: hsl(var(--primary));
+        box-shadow: 0 0 0 3px hsl(var(--primary) / 0.1);
+      }
     </style>
-</head>
-<body class="bg-gradient-subtle">
+  </head>
+  <body class="bg-gradient-subtle">
     <!-- Navigation -->
-    <nav class="bg-white/95 backdrop-blur-sm border-b border-primary/10 sticky top-0 z-50">
-        <div class="container mx-auto px-4">
-            <div class="flex items-center justify-between h-16">
-                <!-- Logo -->
-                <a href="index.html" class="flex items-center space-x-2">
-                    <div class="w-10 h-10 bg-gradient-primary rounded-full flex items-center justify-center">
-                        <span class="text-white font-bold text-lg">FV</span>
-                    </div>
-                    <div class="hidden sm:block">
-                        <h1 class="text-xl font-bold text-primary">FreshVeggie</h1>
-                        <p class="text-xs text-muted-foreground">Import & Export</p>
-                    </div>
-                </a>
+    <nav class="bg-white/65 backdrop-blur-md sticky top-0 z-50">
+      <div class="container mx-auto px-4">
+        <div class="flex items-center justify-between h-16 !border-0">
+          <!-- Logo -->
+          <a href="index.html" class="flex items-center space-x-2">
+            <img
+              src="/images/color_logo_horizontal.png"
+              class="w-[160px]"
+              alt="Vanijya Global Exports Logo"
+            />
+          </a>
 
-                <!-- Desktop Navigation -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="index.html" class="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Home</a>
-                    <a href="contact.html" class="text-sm font-medium text-primary border-b-2 border-primary pb-1">Contact</a>
-                    <button class="px-4 py-2 bg-gradient-primary text-white rounded-md hover:opacity-90 transition-opacity">
-                        Get Quote
-                    </button>
-                </div>
+          <!-- Desktop Navigation -->
+          <div class="hidden md:flex items-center space-x-8">
+            <a
+              href="index.html"
+              class="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+              >Home</a
+            >
+            <a
+              href="contact.html"
+              class="text-sm font-medium text-primary border-b-2 border-primary pb-1"
+              >Contact</a
+            >
+            <button
+              class="px-4 py-2 bg-gradient-primary text-white rounded-md hover:opacity-90 transition-opacity"
+            >
+              Get Quote
+            </button>
+          </div>
 
-                <!-- Mobile Menu Button -->
-                <button id="mobile-menu-btn" class="md:hidden p-2">
-                    <i data-lucide="menu" class="h-6 w-6"></i>
-                </button>
-            </div>
-
-            <!-- Mobile Navigation -->
-            <div id="mobile-menu" class="mobile-menu md:hidden border-t border-primary/10">
-                <div class="py-4 flex flex-col space-y-4">
-                    <a href="index.html" class="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Home</a>
-                    <a href="contact.html" class="text-sm font-medium text-primary">Contact</a>
-                    <button class="px-4 py-2 bg-gradient-primary text-white rounded-md hover:opacity-90 transition-opacity w-fit">
-                        Get Quote
-                    </button>
-                </div>
-            </div>
+          <!-- Mobile Menu Button -->
+          <button id="mobile-menu-btn" class="md:hidden p-2">
+            <i data-lucide="menu" class="h-6 w-6 text-primary"></i>
+          </button>
         </div>
+
+        <!-- Mobile Navigation -->
+        <div
+          id="mobile-menu"
+          class="mobile-menu md:hidden border-t border-primary/10"
+        >
+          <div class="py-4 flex flex-col space-y-4">
+            <a
+              href="index.html"
+              class="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+              >Home</a
+            >
+            <a href="contact.html" class="text-sm font-medium text-primary"
+              >Contact</a
+            >
+            <button
+              class="px-4 py-2 bg-gradient-primary text-white rounded-md hover:opacity-90 transition-opacity w-fit"
+            >
+              Get Quote
+            </button>
+          </div>
+        </div>
+      </div>
     </nav>
 
     <!-- Header Section -->
     <section class="py-20 bg-gradient-primary text-white">
-        <div class="container mx-auto px-4 text-center">
-            <h1 class="text-4xl md:text-6xl font-bold mb-6 animate-fade-in">
-                Contact Us
-            </h1>
-            <p class="text-xl md:text-2xl opacity-90 max-w-3xl mx-auto animate-fade-in">
-                Ready to start your import-export journey? Get in touch with our experts today.
-            </p>
-        </div>
+      <div class="container mx-auto px-4 text-center">
+        <h1 class="text-4xl md:text-6xl font-bold mb-6 animate-fade-in">
+          Contact Us
+        </h1>
+        <p
+          class="text-xl md:text-2xl opacity-90 max-w-3xl mx-auto animate-fade-in"
+        >
+          Ready to start your import-export journey? Get in touch with our
+          experts today.
+        </p>
+      </div>
     </section>
 
     <!-- Contact Form & Info Section -->
     <section class="py-20 backdrop-blur-sm">
-        <div class="container mx-auto px-4">
-            <div class="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
-                
-                <!-- Contact Form -->
-                <div class="bg-white rounded-lg shadow-elegant border-0 animate-fade-in">
-                    <div class="p-6 border-b">
-                        <h2 class="text-2xl font-bold text-primary">Send us a message</h2>
-                    </div>
-                    <div class="p-6 space-y-6">
-                        <form id="contact-form">
-                            <div class="grid md:grid-cols-2 gap-4 mb-6">
-                                <div>
-                                    <label class="text-sm font-medium text-muted-foreground mb-2 block">
-                                        First Name
-                                    </label>
-                                    <input type="text" name="firstName" placeholder="John" class="form-input" required />
-                                </div>
-                                <div>
-                                    <label class="text-sm font-medium text-muted-foreground mb-2 block">
-                                        Last Name
-                                    </label>
-                                    <input type="text" name="lastName" placeholder="Doe" class="form-input" required />
-                                </div>
-                            </div>
-                            
-                            <div class="mb-6">
-                                <label class="text-sm font-medium text-muted-foreground mb-2 block">
-                                    Email
-                                </label>
-                                <input 
-                                    type="email" 
-                                    name="email"
-                                    placeholder="john@example.com" 
-                                    class="form-input"
-                                    required
-                                />
-                            </div>
-                            
-                            <div class="mb-6">
-                                <label class="text-sm font-medium text-muted-foreground mb-2 block">
-                                    Phone
-                                </label>
-                                <input 
-                                    type="tel" 
-                                    name="phone"
-                                    placeholder="+1 (555) 123-4567" 
-                                    class="form-input"
-                                />
-                            </div>
-                            
-                            <div class="mb-6">
-                                <label class="text-sm font-medium text-muted-foreground mb-2 block">
-                                    Product Interest
-                                </label>
-                                <input 
-                                    type="text"
-                                    name="productInterest"
-                                    placeholder="Vegetables, Fruits, Spices..." 
-                                    class="form-input"
-                                />
-                            </div>
-                            
-                            <div class="mb-6">
-                                <label class="text-sm font-medium text-muted-foreground mb-2 block">
-                                    Message
-                                </label>
-                                <textarea 
-                                    name="message"
-                                    placeholder="Tell us about your requirements..."
-                                    class="form-textarea"
-                                    required
-                                ></textarea>
-                            </div>
-                            
-                            <button type="submit" class="w-full py-6 bg-gradient-primary text-white text-lg rounded-md hover:opacity-90 transition-opacity">
-                                Send Message
-                            </button>
-                        </form>
-                    </div>
-                </div>
-
-                <!-- Contact Info -->
-                <div class="space-y-8 animate-fade-in">
-                    <div>
-                        <h2 class="text-3xl font-bold text-primary mb-6">Get in Touch</h2>
-                        <p class="text-muted-foreground text-lg leading-relaxed">
-                            We're here to help you with all your import-export needs. Whether you're looking 
-                            for fresh vegetables, exotic fruits, or premium spices, our team is ready to 
-                            connect you with the best suppliers worldwide.
-                        </p>
-                    </div>
-
-                    <div class="grid gap-6">
-                        <div class="bg-white p-6 rounded-lg border border-primary/10 hover:shadow-md transition-shadow">
-                            <div class="flex items-start space-x-4">
-                                <div class="p-3 bg-gradient-primary rounded-full">
-                                    <i data-lucide="map-pin" class="h-6 w-6 text-white"></i>
-                                </div>
-                                <div>
-                                    <h3 class="font-semibold text-primary mb-1">Address</h3>
-                                    <p class="text-muted-foreground">
-                                        123 Trade Center Blvd<br />
-                                        International District<br />
-                                        New York, NY 10001
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="bg-white p-6 rounded-lg border border-primary/10 hover:shadow-md transition-shadow">
-                            <div class="flex items-start space-x-4">
-                                <div class="p-3 bg-gradient-secondary rounded-full">
-                                    <i data-lucide="phone" class="h-6 w-6 text-white"></i>
-                                </div>
-                                <div>
-                                    <h3 class="font-semibold text-primary mb-1">Phone</h3>
-                                    <p class="text-muted-foreground">
-                                        +1 (555) 123-4567<br />
-                                        +1 (555) 987-6543
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="bg-white p-6 rounded-lg border border-primary/10 hover:shadow-md transition-shadow">
-                            <div class="flex items-start space-x-4">
-                                <div class="p-3 bg-gradient-accent rounded-full">
-                                    <i data-lucide="mail" class="h-6 w-6 text-white"></i>
-                                </div>
-                                <div>
-                                    <h3 class="font-semibold text-primary mb-1">Email</h3>
-                                    <p class="text-muted-foreground">
-                                        info@freshveggie.com<br />
-                                        sales@freshveggie.com
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="bg-white p-6 rounded-lg border border-primary/10 hover:shadow-md transition-shadow">
-                            <div class="flex items-start space-x-4">
-                                <div class="p-3 bg-gradient-primary rounded-full">
-                                    <i data-lucide="clock" class="h-6 w-6 text-white"></i>
-                                </div>
-                                <div>
-                                    <h3 class="font-semibold text-primary mb-1">Business Hours</h3>
-                                    <p class="text-muted-foreground">
-                                        Monday - Friday: 8:00 AM - 6:00 PM<br />
-                                        Saturday: 9:00 AM - 4:00 PM<br />
-                                        Sunday: Closed
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+      <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+          <!-- Contact Form -->
+          <div
+            class="bg-white rounded-lg shadow-elegant border-0 animate-fade-in"
+          >
+            <div class="p-6 border-b">
+              <h2 class="text-2xl font-bold text-primary">Send us a message</h2>
             </div>
+            <div class="p-6 space-y-6">
+              <form id="contact-form">
+                <div class="grid md:grid-cols-2 gap-4 mb-6">
+                  <div>
+                    <label
+                      class="text-sm font-medium text-muted-foreground mb-2 block"
+                    >
+                      First Name
+                    </label>
+                    <input
+                      type="text"
+                      name="firstName"
+                      placeholder="John"
+                      class="form-input"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label
+                      class="text-sm font-medium text-muted-foreground mb-2 block"
+                    >
+                      Last Name
+                    </label>
+                    <input
+                      type="text"
+                      name="lastName"
+                      placeholder="Doe"
+                      class="form-input"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="mb-6">
+                  <label
+                    class="text-sm font-medium text-muted-foreground mb-2 block"
+                  >
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="john@example.com"
+                    class="form-input"
+                    required
+                  />
+                </div>
+
+                <div class="mb-6">
+                  <label
+                    class="text-sm font-medium text-muted-foreground mb-2 block"
+                  >
+                    Phone
+                  </label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    placeholder="+1 (555) 123-4567"
+                    class="form-input"
+                  />
+                </div>
+
+                <div class="mb-6">
+                  <label
+                    class="text-sm font-medium text-muted-foreground mb-2 block"
+                  >
+                    Product Interest
+                  </label>
+                  <input
+                    type="text"
+                    name="productInterest"
+                    placeholder="Vegetables, Fruits, Spices..."
+                    class="form-input"
+                  />
+                </div>
+
+                <div class="mb-6">
+                  <label
+                    class="text-sm font-medium text-muted-foreground mb-2 block"
+                  >
+                    Message
+                  </label>
+                  <textarea
+                    name="message"
+                    placeholder="Tell us about your requirements..."
+                    class="form-textarea"
+                    required
+                  ></textarea>
+                </div>
+
+                <button
+                  type="submit"
+                  class="w-full py-6 bg-gradient-primary text-white text-lg rounded-md hover:opacity-90 transition-opacity"
+                >
+                  Send Message
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <!-- Contact Info -->
+          <div class="space-y-8 animate-fade-in">
+            <div>
+              <h2 class="text-3xl font-bold text-primary mb-6">Get in Touch</h2>
+              <p class="text-muted-foreground text-lg leading-relaxed">
+                We're here to help you with all your import-export needs.
+                Whether you're looking for fresh vegetables, exotic fruits, or
+                premium spices, our team is ready to connect you with the best
+                suppliers worldwide.
+              </p>
+            </div>
+
+            <div class="grid gap-6">
+              <div
+                class="bg-white p-6 rounded-lg border border-primary/10 hover:shadow-md transition-shadow"
+              >
+                <div class="flex items-start space-x-4">
+                  <div class="p-3 bg-gradient-primary rounded-full">
+                    <i data-lucide="map-pin" class="h-6 w-6 text-white"></i>
+                  </div>
+                  <div>
+                    <h3 class="font-semibold text-primary mb-1">Address</h3>
+                    <p class="text-muted-foreground">
+                      123 Trade Center Blvd<br />
+                      International District<br />
+                      New York, NY 10001
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="bg-white p-6 rounded-lg border border-primary/10 hover:shadow-md transition-shadow"
+              >
+                <div class="flex items-start space-x-4">
+                  <div class="p-3 bg-gradient-secondary rounded-full">
+                    <i data-lucide="phone" class="h-6 w-6 text-white"></i>
+                  </div>
+                  <div>
+                    <h3 class="font-semibold text-primary mb-1">Phone</h3>
+                    <p class="text-muted-foreground">
+                      +1 (555) 123-4567<br />
+                      +1 (555) 987-6543
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="bg-white p-6 rounded-lg border border-primary/10 hover:shadow-md transition-shadow"
+              >
+                <div class="flex items-start space-x-4">
+                  <div class="p-3 bg-gradient-accent rounded-full">
+                    <i data-lucide="mail" class="h-6 w-6 text-white"></i>
+                  </div>
+                  <div>
+                    <h3 class="font-semibold text-primary mb-1">Email</h3>
+                    <p class="text-muted-foreground">
+                      info@freshveggie.com<br />
+                      sales@freshveggie.com
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="bg-white p-6 rounded-lg border border-primary/10 hover:shadow-md transition-shadow"
+              >
+                <div class="flex items-start space-x-4">
+                  <div class="p-3 bg-gradient-primary rounded-full">
+                    <i data-lucide="clock" class="h-6 w-6 text-white"></i>
+                  </div>
+                  <div>
+                    <h3 class="font-semibold text-primary mb-1">
+                      Business Hours
+                    </h3>
+                    <p class="text-muted-foreground">
+                      Monday - Friday: 8:00 AM - 6:00 PM<br />
+                      Saturday: 9:00 AM - 4:00 PM<br />
+                      Sunday: Closed
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Footer -->
     <footer class="bg-primary text-white py-12">
-        <div class="container mx-auto px-4 text-center">
-            <div class="flex items-center justify-center space-x-2 mb-4">
-                <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-                    <span class="text-primary font-bold">FV</span>
-                </div>
-                <span class="text-xl font-bold">FreshVeggie Import & Export</span>
+      <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-4 gap-8 mb-8">
+          <div>
+            <div class="flex items-center space-x-2 mb-4">
+              <img
+                src="/images/white_logo_horizontal.png"
+                class="w-[140px]"
+                alt="Vanijya Global Exports Logo"
+              />
             </div>
             <p class="text-white/80">
-                Connecting global markets with premium quality produce
+              Your trusted partner in global agricultural trade, delivering
+              quality and excellence.
             </p>
-            <div class="mt-8 pt-8 border-t border-white/20">
-                <p class="text-white/60">© 2024 FreshVeggie. All rights reserved.</p>
-            </div>
+          </div>
+
+          <div>
+            <h4 class="font-semibold mb-4">Products</h4>
+            <ul class="space-y-2 text-white/80">
+              <li>Fresh Vegetables</li>
+              <li>Premium Fruits</li>
+              <li>Exotic Spices</li>
+              <li>Organic Products</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="font-semibold mb-4">Services</h4>
+            <ul class="space-y-2 text-white/80">
+              <li>Import Services</li>
+              <li>Export Solutions</li>
+              <li>Quality Control</li>
+              <li>Logistics Support</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="font-semibold mb-4">Contact</h4>
+            <ul class="space-y-2 text-white/80">
+              <li>+1 (555) 123-4567</li>
+              <li>info@freshveggie.com</li>
+              <li>123 Trade Center Blvd</li>
+              <li>New York, NY 10001</li>
+            </ul>
+          </div>
         </div>
+
+        <div class="border-t border-white/20 pt-8 text-center">
+          <p class="text-white/60">
+            © 2025 Vanijya Global Exports. All rights reserved.
+          </p>
+        </div>
+      </div>
     </footer>
 
     <script>
-        // Initialize Lucide icons
-        lucide.createIcons();
+      // Initialize Lucide icons
+      lucide.createIcons();
 
-        // Mobile menu toggle
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
+      // Mobile menu toggle
+      const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
 
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('open');
-        });
+      mobileMenuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("open");
+      });
 
-        // Contact form handling
-        const contactForm = document.getElementById('contact-form');
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(this);
-            const data = {};
-            for (let [key, value] of formData.entries()) {
-                data[key] = value;
-            }
-            
-            // Simple validation
-            if (!data.firstName || !data.lastName || !data.email || !data.message) {
-                alert('Please fill in all required fields.');
-                return;
-            }
-            
-            // Email validation
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(data.email)) {
-                alert('Please enter a valid email address.');
-                return;
-            }
-            
-            // Show success message (you would typically send this to your server)
-            alert('Thank you for your message! We will get back to you soon.');
-            
-            // Reset form
-            this.reset();
-        });
+      // Contact form handling
+      const contactForm = document.getElementById("contact-form");
+      contactForm.addEventListener("submit", function (e) {
+        e.preventDefault();
 
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
+        // Get form data
+        const formData = new FormData(this);
+        const data = {};
+        for (let [key, value] of formData.entries()) {
+          data[key] = value;
+        }
+
+        // Simple validation
+        if (!data.firstName || !data.lastName || !data.email || !data.message) {
+          alert("Please fill in all required fields.");
+          return;
+        }
+
+        // Email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(data.email)) {
+          alert("Please enter a valid email address.");
+          return;
+        }
+
+        // Show success message (you would typically send this to your server)
+        alert("Thank you for your message! We will get back to you soon.");
+
+        // Reset form
+        this.reset();
+      });
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
             });
+          }
         });
+      });
     </script>
-</body>
+  </body>
 </html>

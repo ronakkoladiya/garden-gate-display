@@ -1,605 +1,927 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FreshVeggie Import & Export</title>
-    <meta name="description" content="Premium quality vegetables, fruits, and spices import & export worldwide">
-    <meta name="author" content="FreshVeggie">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vanijya Global Exports</title>
+    <meta
+      name="description"
+      content="Premium quality vegetables, fruits, and spices import & export worldwide"
+    />
+    <meta name="author" content="FreshVeggie" />
+    <link rel="icon" type="image/x-icon" href="/images/favicon.png">
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Lucide Icons CDN -->
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-    
+
     <!-- Custom CSS for design tokens -->
     <style>
-        :root {
-            /* Theme colors (HSL values) */
-            --primary: 112 70% 35%;
-            --primary-bright: 112 75% 45%;
-            --secondary: 30 70% 55%;
-            --secondary-bright: 30 75% 65%;
-            --accent: 45 70% 50%;
-            --accent-bright: 45 75% 60%;
-            --muted: 210 40% 96.1%;
-            --muted-foreground: 215.4 16.3% 46.9%;
-            --background: 0 0% 100%;
-            --foreground: 222.2 84% 4.9%;
-        }
+      :root {
+        /* Theme colors (HSL values) */
+        --primary: 112 70% 35%;
+        --primary-bright: 112 75% 45%;
+        --secondary: 30 70% 55%;
+        --secondary-bright: 30 75% 65%;
+        --accent: 45 70% 50%;
+        --accent-bright: 45 75% 60%;
+        --muted: 210 40% 96.1%;
+        --muted-foreground: 215.4 16.3% 46.9%;
+        --background: 0 0% 100%;
+        --foreground: 222.2 84% 4.9%;
+      }
 
-        .dark {
-            --primary: 112 75% 45%;
-            --primary-bright: 112 80% 55%;
-            --secondary: 30 75% 65%;
-            --secondary-bright: 30 80% 75%;
-            --accent: 45 75% 60%;
-            --accent-bright: 45 80% 70%;
-            --background: 222.2 84% 4.9%;
-            --foreground: 210 40% 98%;
-        }
+      .dark {
+        --primary: 112 75% 45%;
+        --primary-bright: 112 80% 55%;
+        --secondary: 30 75% 65%;
+        --secondary-bright: 30 80% 75%;
+        --accent: 45 75% 60%;
+        --accent-bright: 45 80% 70%;
+        --background: 222.2 84% 4.9%;
+        --foreground: 210 40% 98%;
+      }
 
-        .bg-gradient-primary {
-            background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-bright)));
-        }
-        
-        .bg-gradient-secondary {
-            background: linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--secondary-bright)));
-        }
-        
-        .bg-gradient-accent {
-            background: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--accent-bright)));
-        }
-        
-        .bg-gradient-subtle {
-            background: linear-gradient(180deg, hsl(var(--background)), hsl(112 20% 97%));
-        }
-        
-        .text-primary { color: hsl(var(--primary)); }
-        .text-secondary { color: hsl(var(--secondary)); }
-        .text-accent { color: hsl(var(--accent)); }
-        .text-primary-bright { color: hsl(var(--primary-bright)); }
-        .text-secondary-bright { color: hsl(var(--secondary-bright)); }
-        .text-accent-bright { color: hsl(var(--accent-bright)); }
-        .text-muted-foreground { color: hsl(var(--muted-foreground)); }
-        .bg-primary { background-color: hsl(var(--primary)); }
-        .bg-muted { background-color: hsl(var(--muted)); }
-        .border-primary { border-color: hsl(var(--primary)); }
+      .bg-gradient-primary {
+        background: linear-gradient(
+          135deg,
+          hsl(var(--primary)),
+          hsl(var(--primary-bright))
+        );
+      }
 
-        .shadow-elegant {
-            box-shadow: 0 10px 30px -10px hsl(var(--primary) / 0.25);
-        }
-        
-        .animate-fade-in {
-            animation: fadeIn 0.6s ease-out;
-        }
-        
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .hover-scale {
-            transition: transform 0.2s ease;
-        }
-        
-        .hover-scale:hover {
-            transform: scale(1.05);
-        }
+      .bg-gradient-secondary {
+        background: linear-gradient(
+          135deg,
+          hsl(var(--secondary)),
+          hsl(var(--secondary-bright))
+        );
+      }
 
-        .mobile-menu {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
+      .bg-gradient-accent {
+        background: linear-gradient(
+          135deg,
+          hsl(var(--accent)),
+          hsl(var(--accent-bright))
+        );
+      }
+
+      .bg-gradient-subtle {
+        background: linear-gradient(
+          180deg,
+          hsl(var(--background)),
+          hsl(112 20% 97%)
+        );
+      }
+
+      .text-primary {
+        color: hsl(var(--primary));
+      }
+      .text-secondary {
+        color: hsl(var(--secondary));
+      }
+      .text-accent {
+        color: hsl(var(--accent));
+      }
+      .text-primary-bright {
+        color: hsl(var(--primary-bright));
+      }
+      .text-secondary-bright {
+        color: hsl(var(--secondary-bright));
+      }
+      .text-accent-bright {
+        color: hsl(var(--accent-bright));
+      }
+      .text-muted-foreground {
+        color: hsl(var(--muted-foreground));
+      }
+      .bg-primary {
+        background-color: hsl(var(--primary));
+      }
+      .bg-muted {
+        background-color: hsl(var(--muted));
+      }
+      .border-primary {
+        border-color: hsl(var(--primary));
+      }
+
+      .shadow-elegant {
+        box-shadow: 0 10px 30px -10px hsl(var(--primary) / 0.25);
+      }
+
+      .animate-fade-in {
+        animation: fadeIn 0.6s ease-out;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
         }
-        
-        .mobile-menu.open {
-            max-height: 300px;
+        to {
+          opacity: 1;
+          transform: translateY(0);
         }
+      }
+
+      .hover-scale {
+        transition: transform 0.2s ease;
+      }
+
+      .hover-scale:hover {
+        transform: scale(1.05);
+      }
+
+      .mobile-menu {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+      }
+
+      .mobile-menu.open {
+        max-height: 300px;
+      }
     </style>
-</head>
-<body class="bg-gradient-subtle">
+  </head>
+  <body class="bg-gradient-subtle">
     <!-- Navigation -->
-    <nav class="bg-white/95 backdrop-blur-sm border-b border-primary/10 sticky top-0 z-50">
-        <div class="container mx-auto px-4">
-            <div class="flex items-center justify-between h-16">
-                <!-- Logo -->
-                <a href="index.html" class="flex items-center space-x-2">
-                    <div class="w-10 h-10 bg-gradient-primary rounded-full flex items-center justify-center">
-                        <span class="text-white font-bold text-lg">FV</span>
-                    </div>
-                    <div class="hidden sm:block">
-                        <h1 class="text-xl font-bold text-primary">FreshVeggie</h1>
-                        <p class="text-xs text-muted-foreground">Import & Export</p>
-                    </div>
-                </a>
+    <nav class="bg-white/65 backdrop-blur-md sticky top-0 z-50">
+      <div class="container mx-auto px-4">
+        <div class="flex items-center justify-between h-16 !border-0">
+          <!-- Logo -->
+          <a href="index.html" class="flex items-center space-x-2">
+            <img
+              src="/images/color_logo_horizontal.png"
+              class="w-[160px]"
+              alt="Vanijya Global Exports Logo"
+            />
+          </a>
 
-                <!-- Desktop Navigation -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="index.html" class="text-sm font-medium text-primary border-b-2 border-primary pb-1">Home</a>
-                    <a href="contact.html" class="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Contact</a>
-                    <button class="px-4 py-2 bg-gradient-primary text-white rounded-md hover:opacity-90 transition-opacity">
-                        Get Quote
-                    </button>
-                </div>
+          <!-- Desktop Navigation -->
+          <div class="hidden md:flex items-center space-x-8">
+            <a
+              href="index.html"
+              class="text-sm font-medium text-primary border-b-2 border-primary pb-1"
+              >Home</a
+            >
+            <a
+              href="contact.html"
+              class="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+              >Contact</a
+            >
+            <button
+              class="px-4 py-2 bg-gradient-primary text-white rounded-md hover:opacity-90 transition-opacity"
+            >
+              Get Quote
+            </button>
+          </div>
 
-                <!-- Mobile Menu Button -->
-                <button id="mobile-menu-btn" class="md:hidden p-2">
-                    <i data-lucide="menu" class="h-6 w-6"></i>
-                </button>
-            </div>
-
-            <!-- Mobile Navigation -->
-            <div id="mobile-menu" class="mobile-menu md:hidden border-t border-primary/10">
-                <div class="py-4 flex flex-col space-y-4">
-                    <a href="index.html" class="text-sm font-medium text-primary">Home</a>
-                    <a href="contact.html" class="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Contact</a>
-                    <button class="px-4 py-2 bg-gradient-primary text-white rounded-md hover:opacity-90 transition-opacity w-fit">
-                        Get Quote
-                    </button>
-                </div>
-            </div>
+          <!-- Mobile Menu Button -->
+          <button id="mobile-menu-btn" class="md:hidden p-2">
+            <i data-lucide="menu" class="h-6 w-6 text-primary"></i>
+          </button>
         </div>
+
+        <!-- Mobile Navigation -->
+        <div
+          id="mobile-menu"
+          class="mobile-menu md:hidden border-t border-primary/10"
+        >
+          <div class="py-4 flex flex-col space-y-4">
+            <a href="index.html" class="text-sm font-medium text-primary"
+              >Home</a
+            >
+            <a
+              href="contact.html"
+              class="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+              >Contact</a
+            >
+            <button
+              class="px-4 py-2 bg-gradient-primary text-white rounded-md hover:opacity-90 transition-opacity w-fit"
+            >
+              Get Quote
+            </button>
+          </div>
+        </div>
+      </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative py-20 md:py-32 bg-gradient-primary text-white overflow-hidden">
-        <div class="absolute inset-0 bg-black/20"></div>
-        <div class="container mx-auto px-4 relative z-10">
-            <div class="max-w-4xl mx-auto text-center">
-                <div class="mb-6 inline-block px-4 py-2 bg-white/20 text-white border border-white/30 rounded-full text-sm">
-                    🌱 Premium Quality Import & Export
-                </div>
-                <h1 class="text-4xl md:text-7xl font-bold mb-6 animate-fade-in">
-                    Fresh <span class="text-accent-bright">Vegetables</span>,
-                    <br />Exotic <span class="text-secondary-bright">Fruits</span> &
-                    <br />Premium <span class="text-primary-bright">Spices</span>
-                </h1>
-                <p class="text-xl md:text-2xl mb-8 opacity-90 leading-relaxed animate-fade-in">
-                    Connecting global markets with the finest quality produce from trusted farmers worldwide. 
-                    Your gateway to international trade in agricultural products.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in">
-                    <button class="px-8 py-6 bg-white text-primary hover:bg-white/90 text-lg rounded-md transition-colors">
-                        Explore Products
-                        <i data-lucide="arrow-right" class="ml-2 h-5 w-5 inline"></i>
-                    </button>
-                    <button class="px-8 py-6 border border-white text-white hover:bg-white/10 text-lg rounded-md transition-colors">
-                        Get Quote
-                    </button>
-                </div>
-            </div>
+    <section
+      class="relative py-20 md:py-32 !pb-[180px] md:!pb-[240px] bg-gradient-primary text-white overflow-hidden"
+    >
+      <div class="absolute inset-0 bg-black/20"></div>
+      <div class="container mx-auto px-4 relative z-10">
+        <div class="max-w-4xl mx-auto text-center">
+          <div
+            class="mb-6 inline-block px-4 py-2 bg-white/20 text-white border border-white/30 rounded-full text-sm"
+          >
+            🌱 Premium Quality Import & Export
+          </div>
+          <h1 class="text-4xl md:text-7xl font-bold mb-6 animate-fade-in">
+            Fresh <span class="text-accent-bright">Vegetables</span>,
+            <br />Exotic <span class="text-secondary-bright">Fruits</span> &
+            <br />Premium <span class="text-primary-bright">Spices</span>
+          </h1>
+          <p
+            class="text-xl md:text-2xl mb-8 opacity-90 leading-relaxed animate-fade-in"
+          >
+            Connecting global markets with the finest quality produce from
+            trusted farmers worldwide. Your gateway to international trade in
+            agricultural products.
+          </p>
+          <div
+            class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in"
+          >
+            <button
+              class="px-8 py-3 bg-white text-primary hover:bg-white/90 text-lg rounded-md transition-colors"
+            >
+              Explore Products
+              <i data-lucide="arrow-right" class="ml-2 h-5 w-5 inline"></i>
+            </button>
+            <button
+              class="px-8 py-3 border border-white text-white hover:bg-white/10 text-lg rounded-md transition-colors"
+            >
+              Get Quote
+            </button>
+          </div>
         </div>
-        <div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent"></div>
+      </div>
+      <div
+        class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent"
+      ></div>
     </section>
 
     <!-- Our Product Range Section -->
     <section class="py-20">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold text-primary mb-6">Our Product Range</h2>
-                <p class="text-xl text-muted-foreground max-w-3xl mx-auto">
-                    We specialize in sourcing and supplying the finest quality agricultural products 
-                    from certified farms across the globe, ensuring premium quality and freshness.
-                </p>
-            </div>
-            
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Premium Spices -->
-                <div class="bg-white rounded-lg shadow-elegant hover-scale transition-all duration-300 animate-fade-in overflow-hidden">
-                    <div class="bg-gradient-primary p-8 text-white text-center">
-                        <div class="inline-flex p-4 bg-white/20 rounded-full mb-4">
-                            <i data-lucide="sparkles" class="h-12 w-12"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-4">Premium Spices</h3>
-                        <p class="text-white/90 leading-relaxed">Sourced from the finest spice gardens across India and Southeast Asia, our premium spices are carefully selected, processed, and packed to retain their natural aroma, flavor, and nutritional value.</p>
-                    </div>
-                    <div class="p-6">
-                        <div class="grid grid-cols-2 gap-2 mb-6">
-                            <span class="px-3 py-2 bg-muted rounded-full text-sm text-center">Turmeric</span>
-                            <span class="px-3 py-2 bg-muted rounded-full text-sm text-center">Cardamom</span>
-                            <span class="px-3 py-2 bg-muted rounded-full text-sm text-center">Black Pepper</span>
-                            <span class="px-3 py-2 bg-muted rounded-full text-sm text-center">Cinnamon</span>
-                            <span class="px-3 py-2 bg-muted rounded-full text-sm text-center">Cumin</span>
-                            <span class="px-3 py-2 bg-muted rounded-full text-sm text-center">Coriander</span>
-                        </div>
-                        <button class="w-full py-3 bg-gradient-primary text-white rounded-md hover:opacity-90 transition-opacity">
-                            View Products
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Fresh Vegetables -->
-                <div class="bg-white rounded-lg shadow-elegant hover-scale transition-all duration-300 animate-fade-in overflow-hidden">
-                    <div class="bg-gradient-secondary p-8 text-white text-center">
-                        <div class="inline-flex p-4 bg-white/20 rounded-full mb-4">
-                            <i data-lucide="leaf" class="h-12 w-12"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-4">Fresh Vegetables</h3>
-                        <p class="text-white/90 leading-relaxed">Farm-fresh vegetables sourced directly from certified organic farms, ensuring maximum nutrition and freshness for global markets with strict quality control at every stage.</p>
-                    </div>
-                    <div class="p-6">
-                        <div class="grid grid-cols-2 gap-2 mb-6">
-                            <span class="px-3 py-2 bg-muted rounded-full text-sm text-center">Onions</span>
-                            <span class="px-3 py-2 bg-muted rounded-full text-sm text-center">Potatoes</span>
-                            <span class="px-3 py-2 bg-muted rounded-full text-sm text-center">Tomatoes</span>
-                            <span class="px-3 py-2 bg-muted rounded-full text-sm text-center">Carrots</span>
-                            <span class="px-3 py-2 bg-muted rounded-full text-sm text-center">Bell Peppers</span>
-                            <span class="px-3 py-2 bg-muted rounded-full text-sm text-center">Broccoli</span>
-                        </div>
-                        <button class="w-full py-3 bg-gradient-primary text-white rounded-md hover:opacity-90 transition-opacity">
-                            View Products
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Exotic Fruits -->
-                <div class="bg-white rounded-lg shadow-elegant hover-scale transition-all duration-300 animate-fade-in overflow-hidden">
-                    <div class="bg-gradient-accent p-8 text-white text-center">
-                        <div class="inline-flex p-4 bg-white/20 rounded-full mb-4">
-                            <i data-lucide="apple" class="h-12 w-12"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-4">Exotic Fruits</h3>
-                        <p class="text-white/90 leading-relaxed">Handpicked tropical and exotic fruits from select orchards, delivered with optimal ripeness and nutritional content, meeting international quality standards.</p>
-                    </div>
-                    <div class="p-6">
-                        <div class="grid grid-cols-2 gap-2 mb-6">
-                            <span class="px-3 py-2 bg-muted rounded-full text-sm text-center">Mangoes</span>
-                            <span class="px-3 py-2 bg-muted rounded-full text-sm text-center">Bananas</span>
-                            <span class="px-3 py-2 bg-muted rounded-full text-sm text-center">Citrus Fruits</span>
-                            <span class="px-3 py-2 bg-muted rounded-full text-sm text-center">Grapes</span>
-                            <span class="px-3 py-2 bg-muted rounded-full text-sm text-center">Pomegranates</span>
-                            <span class="px-3 py-2 bg-muted rounded-full text-sm text-center">Dragon Fruit</span>
-                        </div>
-                        <button class="w-full py-3 bg-gradient-primary text-white rounded-md hover:opacity-90 transition-opacity">
-                            View Products
-                        </button>
-                    </div>
-                </div>
-            </div>
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold text-primary mb-6">
+            Our Product Range
+          </h2>
+          <p class="text-xl text-muted-foreground max-w-3xl mx-auto">
+            We specialize in sourcing and supplying the finest quality
+            agricultural products from certified farms across the globe,
+            ensuring premium quality and freshness.
+          </p>
         </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- Premium Spices -->
+          <div
+            class="bg-white rounded-lg shadow-elegant hover-scale transition-all duration-300 animate-fade-in overflow-hidden"
+          >
+            <div class="bg-gradient-primary p-8 text-white text-center">
+              <div class="inline-flex p-4 bg-white/20 rounded-full mb-4">
+                <i data-lucide="sparkles" class="h-12 w-12"></i>
+              </div>
+              <h3 class="text-2xl font-bold mb-4">Premium Spices</h3>
+              <p class="text-white/90 leading-relaxed">
+                Sourced from the finest spice gardens across India and Southeast
+                Asia, our premium spices are carefully selected, processed, and
+                packed to retain their nutritional value.
+              </p>
+            </div>
+            <div class="p-6">
+              <div class="grid grid-cols-2 gap-2 mb-6">
+                <span
+                  class="px-3 py-2 bg-muted rounded-full text-sm text-center"
+                  >Turmeric</span
+                >
+                <span
+                  class="px-3 py-2 bg-muted rounded-full text-sm text-center"
+                  >Cardamom</span
+                >
+                <span
+                  class="px-3 py-2 bg-muted rounded-full text-sm text-center"
+                  >Black Pepper</span
+                >
+                <span
+                  class="px-3 py-2 bg-muted rounded-full text-sm text-center"
+                  >Cinnamon</span
+                >
+                <span
+                  class="px-3 py-2 bg-muted rounded-full text-sm text-center"
+                  >Cumin</span
+                >
+                <span
+                  class="px-3 py-2 bg-muted rounded-full text-sm text-center"
+                  >Coriander</span
+                >
+              </div>
+              <button
+                class="w-full py-3 bg-gradient-primary text-white rounded-md hover:opacity-90 transition-opacity"
+              >
+                View Products
+              </button>
+            </div>
+          </div>
+
+          <!-- Fresh Vegetables -->
+          <div
+            class="bg-white rounded-lg shadow-elegant hover-scale transition-all duration-300 animate-fade-in overflow-hidden"
+          >
+            <div class="bg-gradient-secondary p-8 text-white text-center">
+              <div class="inline-flex p-4 bg-white/20 rounded-full mb-4">
+                <i data-lucide="leaf" class="h-12 w-12"></i>
+              </div>
+              <h3 class="text-2xl font-bold mb-4">Fresh Vegetables</h3>
+              <p class="text-white/90 leading-relaxed">
+                Farm-fresh vegetables sourced directly from certified organic
+                farms, ensuring maximum nutrition and freshness for global
+                markets with strict quality control at every stage.
+              </p>
+            </div>
+            <div class="p-6">
+              <div class="grid grid-cols-2 gap-2 mb-6">
+                <span
+                  class="px-3 py-2 bg-muted rounded-full text-sm text-center"
+                  >Onions</span
+                >
+                <span
+                  class="px-3 py-2 bg-muted rounded-full text-sm text-center"
+                  >Potatoes</span
+                >
+                <span
+                  class="px-3 py-2 bg-muted rounded-full text-sm text-center"
+                  >Tomatoes</span
+                >
+                <span
+                  class="px-3 py-2 bg-muted rounded-full text-sm text-center"
+                  >Carrots</span
+                >
+                <span
+                  class="px-3 py-2 bg-muted rounded-full text-sm text-center"
+                  >Bell Peppers</span
+                >
+                <span
+                  class="px-3 py-2 bg-muted rounded-full text-sm text-center"
+                  >Broccoli</span
+                >
+              </div>
+              <button
+                class="w-full py-3 bg-gradient-primary text-white rounded-md hover:opacity-90 transition-opacity"
+              >
+                View Products
+              </button>
+            </div>
+          </div>
+
+          <!-- Exotic Fruits -->
+          <div
+            class="bg-white rounded-lg shadow-elegant hover-scale transition-all duration-300 animate-fade-in overflow-hidden"
+          >
+            <div class="bg-gradient-accent p-8 text-white text-center">
+              <div class="inline-flex p-4 bg-white/20 rounded-full mb-4">
+                <i data-lucide="apple" class="h-12 w-12"></i>
+              </div>
+              <h3 class="text-2xl font-bold mb-4">Exotic Fruits</h3>
+              <p class="text-white/90 leading-relaxed">
+                Handpicked tropical and exotic fruits from select orchards,
+                delivered with optimal ripeness and nutritional content, meeting
+                international quality standards.
+              </p>
+            </div>
+            <div class="p-6">
+              <div class="grid grid-cols-2 gap-2 mb-6">
+                <span
+                  class="px-3 py-2 bg-muted rounded-full text-sm text-center"
+                  >Mangoes</span
+                >
+                <span
+                  class="px-3 py-2 bg-muted rounded-full text-sm text-center"
+                  >Bananas</span
+                >
+                <span
+                  class="px-3 py-2 bg-muted rounded-full text-sm text-center"
+                  >Citrus Fruits</span
+                >
+                <span
+                  class="px-3 py-2 bg-muted rounded-full text-sm text-center"
+                  >Grapes</span
+                >
+                <span
+                  class="px-3 py-2 bg-muted rounded-full text-sm text-center"
+                  >Pomegranates</span
+                >
+                <span
+                  class="px-3 py-2 bg-muted rounded-full text-sm text-center"
+                  >Dragon Fruit</span
+                >
+              </div>
+              <button
+                class="w-full py-3 bg-gradient-primary text-white rounded-md hover:opacity-90 transition-opacity"
+              >
+                View Products
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Quality Assurance Section -->
     <section class="py-20 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold text-primary mb-6">Quality Assurance & Sourcing</h2>
-                <p class="text-xl text-muted-foreground max-w-3xl mx-auto">
-                    Our commitment to excellence starts from the source. We maintain strict quality standards 
-                    throughout our supply chain to deliver only the finest products to our global customers.
-                </p>
-            </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="text-center p-6 border border-primary/10 rounded-lg hover:shadow-md transition-shadow animate-fade-in group">
-                    <div class="inline-flex p-4 bg-gradient-primary rounded-full text-white mb-4 group-hover:scale-110 transition-transform">
-                        <i data-lucide="factory" class="h-8 w-8"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-primary mb-3">Direct Sourcing</h3>
-                    <p class="text-muted-foreground leading-relaxed">We work directly with farmers and growers to ensure traceability and maintain the highest quality standards from farm to export.</p>
-                </div>
-
-                <div class="text-center p-6 border border-primary/10 rounded-lg hover:shadow-md transition-shadow animate-fade-in group">
-                    <div class="inline-flex p-4 bg-gradient-primary rounded-full text-white mb-4 group-hover:scale-110 transition-transform">
-                        <i data-lucide="shield" class="h-8 w-8"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-primary mb-3">Strict Quality Control</h3>
-                    <p class="text-muted-foreground leading-relaxed">Multi-stage quality inspections with advanced testing facilities to ensure all products meet international food safety standards.</p>
-                </div>
-
-                <div class="text-center p-6 border border-primary/10 rounded-lg hover:shadow-md transition-shadow animate-fade-in group">
-                    <div class="inline-flex p-4 bg-gradient-primary rounded-full text-white mb-4 group-hover:scale-110 transition-transform">
-                        <i data-lucide="check-circle" class="h-8 w-8"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-primary mb-3">Certified Processes</h3>
-                    <p class="text-muted-foreground leading-relaxed">ISO certified processing facilities with HACCP compliance, ensuring food safety and quality throughout the supply chain.</p>
-                </div>
-
-                <div class="text-center p-6 border border-primary/10 rounded-lg hover:shadow-md transition-shadow animate-fade-in group">
-                    <div class="inline-flex p-4 bg-gradient-primary rounded-full text-white mb-4 group-hover:scale-110 transition-transform">
-                        <i data-lucide="award" class="h-8 w-8"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-primary mb-3">Modern Facilities</h3>
-                    <p class="text-muted-foreground leading-relaxed">State-of-the-art processing and packaging facilities equipped with the latest technology for optimal product preservation.</p>
-                </div>
-            </div>
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold text-primary mb-6">
+            Quality Assurance & Sourcing
+          </h2>
+          <p class="text-xl text-muted-foreground max-w-3xl mx-auto">
+            Our commitment to excellence starts from the source. We maintain
+            strict quality standards throughout our supply chain to deliver only
+            the finest products to our global customers.
+          </p>
         </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div
+            class="text-center p-6 border border-primary/10 rounded-lg hover:shadow-md transition-shadow animate-fade-in group"
+          >
+            <div
+              class="inline-flex p-4 bg-gradient-primary rounded-full text-white mb-4 group-hover:scale-110 transition-transform"
+            >
+              <i data-lucide="factory" class="h-8 w-8"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-primary mb-3">
+              Direct Sourcing
+            </h3>
+            <p class="text-muted-foreground leading-relaxed">
+              We work directly with farmers and growers to ensure traceability
+              and maintain the highest quality standards from farm to export.
+            </p>
+          </div>
+
+          <div
+            class="text-center p-6 border border-primary/10 rounded-lg hover:shadow-md transition-shadow animate-fade-in group"
+          >
+            <div
+              class="inline-flex p-4 bg-gradient-primary rounded-full text-white mb-4 group-hover:scale-110 transition-transform"
+            >
+              <i data-lucide="shield" class="h-8 w-8"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-primary mb-3">
+              Strict Quality Control
+            </h3>
+            <p class="text-muted-foreground leading-relaxed">
+              Multi-stage quality inspections with advanced testing facilities
+              to ensure all products meet international food safety standards.
+            </p>
+          </div>
+
+          <div
+            class="text-center p-6 border border-primary/10 rounded-lg hover:shadow-md transition-shadow animate-fade-in group"
+          >
+            <div
+              class="inline-flex p-4 bg-gradient-primary rounded-full text-white mb-4 group-hover:scale-110 transition-transform"
+            >
+              <i data-lucide="check-circle" class="h-8 w-8"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-primary mb-3">
+              Certified Processes
+            </h3>
+            <p class="text-muted-foreground leading-relaxed">
+              ISO certified processing facilities with HACCP compliance,
+              ensuring food safety and quality throughout the supply chain.
+            </p>
+          </div>
+
+          <div
+            class="text-center p-6 border border-primary/10 rounded-lg hover:shadow-md transition-shadow animate-fade-in group"
+          >
+            <div
+              class="inline-flex p-4 bg-gradient-primary rounded-full text-white mb-4 group-hover:scale-110 transition-transform"
+            >
+              <i data-lucide="award" class="h-8 w-8"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-primary mb-3">
+              Modern Facilities
+            </h3>
+            <p class="text-muted-foreground leading-relaxed">
+              State-of-the-art processing and packaging facilities equipped with
+              the latest technology for optimal product preservation.
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Global Export Markets Section -->
     <section class="py-20 bg-gradient-subtle">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold text-primary mb-6">Global Export Markets & Logistics</h2>
-                <div class="max-w-4xl mx-auto">
-                    <p class="text-xl text-muted-foreground leading-relaxed mb-8">
-                        With an extensive network spanning across 50+ countries, Vanijya Global Exports has established itself as a trusted bridge between quality producers and discerning international markets. Our strategic partnerships with leading shipping companies and logistics providers ensure efficient, temperature-controlled transportation that maintains product integrity from source to destination.
-                    </p>
-                    <p class="text-lg text-muted-foreground leading-relaxed mb-8">
-                        We serve diverse markets including Europe, Middle East, Southeast Asia, North America, and Africa, adapting our operations to meet specific regional requirements and regulatory standards. Our advanced supply chain management system provides real-time tracking and documentation, ensuring complete transparency and timely delivery for every shipment.
-                    </p>
-                    <div class="grid md:grid-cols-3 gap-6 mt-12">
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-primary mb-2">50+</div>
-                            <div class="text-muted-foreground">Countries Served</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-primary mb-2">1000+</div>
-                            <div class="text-muted-foreground">Successful Shipments</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-primary mb-2">98%</div>
-                            <div class="text-muted-foreground">On-Time Delivery</div>
-                        </div>
-                    </div>
-                </div>
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold text-primary mb-6">
+            Global Export Markets & Logistics
+          </h2>
+          <div class="max-w-4xl mx-auto">
+            <p class="text-xl text-muted-foreground leading-relaxed mb-8">
+              With an extensive network spanning across 50+ countries, Vanijya
+              Global Exports has established itself as a trusted bridge between
+              quality producers and discerning international markets. Our
+              strategic partnerships with leading shipping companies and
+              logistics providers ensure efficient, temperature-controlled
+              transportation that maintains product integrity from source to
+              destination.
+            </p>
+            <p class="text-lg text-muted-foreground leading-relaxed mb-8">
+              We serve diverse markets including Europe, Middle East, Southeast
+              Asia, North America, and Africa, adapting our operations to meet
+              specific regional requirements and regulatory standards.
+            </p>
+            <div class="grid md:grid-cols-3 gap-6 mt-12">
+              <div class="text-center">
+                <div class="text-3xl font-bold text-primary mb-2">50+</div>
+                <div class="text-muted-foreground">Countries Served</div>
+              </div>
+              <div class="text-center">
+                <div class="text-3xl font-bold text-primary mb-2">1000+</div>
+                <div class="text-muted-foreground">Successful Shipments</div>
+              </div>
+              <div class="text-center">
+                <div class="text-3xl font-bold text-primary mb-2">98%</div>
+                <div class="text-muted-foreground">On-Time Delivery</div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Testimonials Section -->
     <section class="py-20 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold text-primary mb-6">What Our Clients Say</h2>
-                <p class="text-xl text-muted-foreground max-w-3xl mx-auto">
-                    Don't just take our word for it. Here's what our valued clients say about their experience with Vanijya Global Exports.
-                </p>
-            </div>
-            
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="p-6 border border-primary/10 rounded-lg hover:shadow-md transition-shadow animate-fade-in">
-                    <div class="flex items-start space-x-4">
-                        <i data-lucide="quote" class="h-8 w-8 text-primary mt-1 flex-shrink-0"></i>
-                        <div>
-                            <p class="text-muted-foreground leading-relaxed mb-4 italic">
-                                "Vanijya Global Exports has been our trusted partner for over 3 years. Their quality is consistently excellent and delivery is always on time."
-                            </p>
-                            <div class="border-t pt-4">
-                                <div class="font-semibold text-primary">Sarah Johnson</div>
-                                <div class="text-sm text-muted-foreground">Global Foods Ltd.</div>
-                                <div class="text-sm text-muted-foreground flex items-center mt-1">
-                                    <i data-lucide="map-pin" class="h-3 w-3 mr-1"></i>
-                                    United Kingdom
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="p-6 border border-primary/10 rounded-lg hover:shadow-md transition-shadow animate-fade-in">
-                    <div class="flex items-start space-x-4">
-                        <i data-lucide="quote" class="h-8 w-8 text-primary mt-1 flex-shrink-0"></i>
-                        <div>
-                            <p class="text-muted-foreground leading-relaxed mb-4 italic">
-                                "The spices we receive are of exceptional quality. Their attention to detail and customer service is outstanding."
-                            </p>
-                            <div class="border-t pt-4">
-                                <div class="font-semibold text-primary">Mohammed Al-Rahman</div>
-                                <div class="text-sm text-muted-foreground">Middle East Trading Co.</div>
-                                <div class="text-sm text-muted-foreground flex items-center mt-1">
-                                    <i data-lucide="map-pin" class="h-3 w-3 mr-1"></i>
-                                    UAE
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="p-6 border border-primary/10 rounded-lg hover:shadow-md transition-shadow animate-fade-in">
-                    <div class="flex items-start space-x-4">
-                        <i data-lucide="quote" class="h-8 w-8 text-primary mt-1 flex-shrink-0"></i>
-                        <div>
-                            <p class="text-muted-foreground leading-relaxed mb-4 italic">
-                                "Working with Vanijya has transformed our business. Their fresh produce always meets our high standards and client expectations."
-                            </p>
-                            <div class="border-t pt-4">
-                                <div class="font-semibold text-primary">Chen Wei</div>
-                                <div class="text-sm text-muted-foreground">Asia Pacific Imports</div>
-                                <div class="text-sm text-muted-foreground flex items-center mt-1">
-                                    <i data-lucide="map-pin" class="h-3 w-3 mr-1"></i>
-                                    Singapore
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold text-primary mb-6">
+            What Our Clients Say
+          </h2>
+          <p class="text-xl text-muted-foreground max-w-3xl mx-auto">
+            Don't just take our word for it. Here's what our valued clients say
+            about their experience with Vanijya Global Exports.
+          </p>
         </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div
+            class="p-6 border border-primary/10 rounded-lg hover:shadow-md transition-shadow animate-fade-in"
+          >
+            <div class="flex items-start space-x-4">
+              <i
+                data-lucide="quote"
+                class="h-8 w-8 text-primary mt-1 flex-shrink-0"
+              ></i>
+              <div>
+                <p class="text-muted-foreground leading-relaxed mb-4 italic">
+                  "Vanijya Global Exports has been our trusted partner for over
+                  3 years. Their quality is consistently excellent and delivery
+                  is always on time."
+                </p>
+                <div class="border-t pt-4">
+                  <div class="font-semibold text-primary">Sarah Johnson</div>
+                  <div class="text-sm text-muted-foreground">
+                    Global Foods Ltd.
+                  </div>
+                  <div
+                    class="text-sm text-muted-foreground flex items-center mt-1"
+                  >
+                    <i data-lucide="map-pin" class="h-3 w-3 mr-1"></i>
+                    United Kingdom
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="p-6 border border-primary/10 rounded-lg hover:shadow-md transition-shadow animate-fade-in"
+          >
+            <div class="flex items-start space-x-4">
+              <i
+                data-lucide="quote"
+                class="h-8 w-8 text-primary mt-1 flex-shrink-0"
+              ></i>
+              <div>
+                <p class="text-muted-foreground leading-relaxed mb-4 italic">
+                  "The spices we receive are of exceptional quality. Their
+                  attention to detail and customer service is outstanding."
+                </p>
+                <div class="border-t pt-4">
+                  <div class="font-semibold text-primary">
+                    Mohammed Al-Rahman
+                  </div>
+                  <div class="text-sm text-muted-foreground">
+                    Middle East Trading Co.
+                  </div>
+                  <div
+                    class="text-sm text-muted-foreground flex items-center mt-1"
+                  >
+                    <i data-lucide="map-pin" class="h-3 w-3 mr-1"></i>
+                    UAE
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="p-6 border border-primary/10 rounded-lg hover:shadow-md transition-shadow animate-fade-in"
+          >
+            <div class="flex items-start space-x-4">
+              <i
+                data-lucide="quote"
+                class="h-8 w-8 text-primary mt-1 flex-shrink-0"
+              ></i>
+              <div>
+                <p class="text-muted-foreground leading-relaxed mb-4 italic">
+                  "Working with Vanijya has transformed our business. Their
+                  fresh produce always meets our high standards and client
+                  expectations."
+                </p>
+                <div class="border-t pt-4">
+                  <div class="font-semibold text-primary">Chen Wei</div>
+                  <div class="text-sm text-muted-foreground">
+                    Asia Pacific Imports
+                  </div>
+                  <div
+                    class="text-sm text-muted-foreground flex items-center mt-1"
+                  >
+                    <i data-lucide="map-pin" class="h-3 w-3 mr-1"></i>
+                    Singapore
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Certifications Section -->
     <section class="py-20 bg-gradient-subtle">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold text-primary mb-6">Certifications & Compliance</h2>
-                <p class="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-                    We maintain the highest standards of quality and safety through internationally recognized certifications. Our commitment to compliance ensures that all our products meet stringent global food safety and quality requirements.
-                </p>
-                <div class="grid md:grid-cols-4 gap-6 mt-12">
-                    <div class="bg-white p-6 rounded-lg border-2 border-primary/10 hover:border-primary/30 transition-colors">
-                        <div class="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center text-white font-bold text-lg mx-auto mb-4">
-                            ISO
-                        </div>
-                        <div class="text-center font-semibold">ISO 22000:2018</div>
-                        <div class="text-center text-sm text-muted-foreground">Food Safety Management</div>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg border-2 border-primary/10 hover:border-primary/30 transition-colors">
-                        <div class="w-16 h-16 bg-gradient-secondary rounded-full flex items-center justify-center text-white font-bold text-lg mx-auto mb-4">
-                            HACCP
-                        </div>
-                        <div class="text-center font-semibold">HACCP Certified</div>
-                        <div class="text-center text-sm text-muted-foreground">Hazard Analysis Critical Control</div>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg border-2 border-primary/10 hover:border-primary/30 transition-colors">
-                        <div class="w-16 h-16 bg-gradient-accent rounded-full flex items-center justify-center text-white font-bold text-lg mx-auto mb-4">
-                            FSSAI
-                        </div>
-                        <div class="text-center font-semibold">FSSAI Licensed</div>
-                        <div class="text-center text-sm text-muted-foreground">Food Safety Standards Authority</div>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg border-2 border-primary/10 hover:border-primary/30 transition-colors">
-                        <div class="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center text-white font-bold text-lg mx-auto mb-4">
-                            BRC
-                        </div>
-                        <div class="text-center font-semibold">BRC Global Standard</div>
-                        <div class="text-center text-sm text-muted-foreground">British Retail Consortium</div>
-                    </div>
-                </div>
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold text-primary mb-6">
+            Certifications & Compliance
+          </h2>
+          <p class="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
+            We maintain the highest standards of quality and safety through
+            internationally recognized certifications. Our commitment to
+            compliance ensures that all our products meet stringent global food
+            safety and quality requirements.
+          </p>
+          <div class="grid md:grid-cols-4 gap-6 mt-12">
+            <div
+              class="bg-white p-6 rounded-lg border-2 border-primary/10 hover:border-primary/30 transition-colors"
+            >
+              <div
+                class="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center text-white font-bold text-lg mx-auto mb-4"
+              >
+                ISO
+              </div>
+              <div class="text-center font-semibold">ISO 22000:2018</div>
+              <div class="text-center text-sm text-muted-foreground">
+                Food Safety Management
+              </div>
             </div>
+            <div
+              class="bg-white p-6 rounded-lg border-2 border-primary/10 hover:border-primary/30 transition-colors"
+            >
+              <div
+                class="w-16 h-16 bg-gradient-secondary rounded-full flex items-center justify-center text-white font-bold text-lg mx-auto mb-4"
+              >
+                HACCP
+              </div>
+              <div class="text-center font-semibold">HACCP Certified</div>
+              <div class="text-center text-sm text-muted-foreground">
+                Hazard Analysis Critical Control
+              </div>
+            </div>
+            <div
+              class="bg-white p-6 rounded-lg border-2 border-primary/10 hover:border-primary/30 transition-colors"
+            >
+              <div
+                class="w-16 h-16 bg-gradient-accent rounded-full flex items-center justify-center text-white font-bold text-lg mx-auto mb-4"
+              >
+                FSSAI
+              </div>
+              <div class="text-center font-semibold">FSSAI Licensed</div>
+              <div class="text-center text-sm text-muted-foreground">
+                Food Safety Standards Authority
+              </div>
+            </div>
+            <div
+              class="bg-white p-6 rounded-lg border-2 border-primary/10 hover:border-primary/30 transition-colors"
+            >
+              <div
+                class="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center text-white font-bold text-lg mx-auto mb-4"
+              >
+                BRC
+              </div>
+              <div class="text-center font-semibold">BRC Global Standard</div>
+              <div class="text-center text-sm text-muted-foreground">
+                British Retail Consortium
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Why Choose Us Section -->
     <section class="py-20 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold text-primary mb-6">Why Choose Vanijya Global Exports?</h2>
-                <p class="text-xl text-muted-foreground max-w-3xl mx-auto">
-                    Our dedication to excellence, sustainable practices, and customer satisfaction 
-                    makes us the preferred choice for international agricultural trade.
-                </p>
-            </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="text-center p-6 border border-primary/10 rounded-lg hover:shadow-md transition-shadow animate-fade-in group">
-                    <div class="inline-flex p-4 bg-gradient-primary rounded-full text-white mb-4 group-hover:scale-110 transition-transform">
-                        <i data-lucide="star" class="h-8 w-8"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-primary mb-3">Proven Expertise</h3>
-                    <p class="text-muted-foreground leading-relaxed">Over 15 years of experience in agricultural exports with deep market knowledge and established global partnerships.</p>
-                </div>
-
-                <div class="text-center p-6 border border-primary/10 rounded-lg hover:shadow-md transition-shadow animate-fade-in group">
-                    <div class="inline-flex p-4 bg-gradient-primary rounded-full text-white mb-4 group-hover:scale-110 transition-transform">
-                        <i data-lucide="award" class="h-8 w-8"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-primary mb-3">Competitive Pricing</h3>
-                    <p class="text-muted-foreground leading-relaxed">Direct sourcing and efficient operations allow us to offer the best prices without compromising on quality.</p>
-                </div>
-
-                <div class="text-center p-6 border border-primary/10 rounded-lg hover:shadow-md transition-shadow animate-fade-in group">
-                    <div class="inline-flex p-4 bg-gradient-primary rounded-full text-white mb-4 group-hover:scale-110 transition-transform">
-                        <i data-lucide="users" class="h-8 w-8"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-primary mb-3">Dedicated Support</h3>
-                    <p class="text-muted-foreground leading-relaxed">24/7 customer support with dedicated account managers to ensure smooth transactions and timely deliveries.</p>
-                </div>
-
-                <div class="text-center p-6 border border-primary/10 rounded-lg hover:shadow-md transition-shadow animate-fade-in group">
-                    <div class="inline-flex p-4 bg-gradient-primary rounded-full text-white mb-4 group-hover:scale-110 transition-transform">
-                        <i data-lucide="leaf" class="h-8 w-8"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-primary mb-3">Ethical Sourcing</h3>
-                    <p class="text-muted-foreground leading-relaxed">Committed to fair trade practices and sustainable farming methods that benefit both farmers and the environment.</p>
-                </div>
-            </div>
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold text-primary mb-6">
+            Why Choose Vanijya Global Exports?
+          </h2>
+          <p class="text-xl text-muted-foreground max-w-3xl mx-auto">
+            Our dedication to excellence, sustainable practices, and customer
+            satisfaction makes us the preferred choice for international
+            agricultural trade.
+          </p>
         </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div
+            class="text-center p-6 border border-primary/10 rounded-lg hover:shadow-md transition-shadow animate-fade-in group"
+          >
+            <div
+              class="inline-flex p-4 bg-gradient-primary rounded-full text-white mb-4 group-hover:scale-110 transition-transform"
+            >
+              <i data-lucide="star" class="h-8 w-8"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-primary mb-3">
+              Proven Expertise
+            </h3>
+            <p class="text-muted-foreground leading-relaxed">
+              Over 15 years of experience in agricultural exports with deep
+              market knowledge and established global partnerships.
+            </p>
+          </div>
+
+          <div
+            class="text-center p-6 border border-primary/10 rounded-lg hover:shadow-md transition-shadow animate-fade-in group"
+          >
+            <div
+              class="inline-flex p-4 bg-gradient-primary rounded-full text-white mb-4 group-hover:scale-110 transition-transform"
+            >
+              <i data-lucide="award" class="h-8 w-8"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-primary mb-3">
+              Competitive Pricing
+            </h3>
+            <p class="text-muted-foreground leading-relaxed">
+              Direct sourcing and efficient operations allow us to offer the
+              best prices without compromising on quality.
+            </p>
+          </div>
+
+          <div
+            class="text-center p-6 border border-primary/10 rounded-lg hover:shadow-md transition-shadow animate-fade-in group"
+          >
+            <div
+              class="inline-flex p-4 bg-gradient-primary rounded-full text-white mb-4 group-hover:scale-110 transition-transform"
+            >
+              <i data-lucide="users" class="h-8 w-8"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-primary mb-3">
+              Dedicated Support
+            </h3>
+            <p class="text-muted-foreground leading-relaxed">
+              24/7 customer support with dedicated account managers to ensure
+              smooth transactions and timely deliveries.
+            </p>
+          </div>
+
+          <div
+            class="text-center p-6 border border-primary/10 rounded-lg hover:shadow-md transition-shadow animate-fade-in group"
+          >
+            <div
+              class="inline-flex p-4 bg-gradient-primary rounded-full text-white mb-4 group-hover:scale-110 transition-transform"
+            >
+              <i data-lucide="leaf" class="h-8 w-8"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-primary mb-3">
+              Ethical Sourcing
+            </h3>
+            <p class="text-muted-foreground leading-relaxed">
+              Committed to fair trade practices and sustainable farming methods
+              that benefit both farmers and the environment.
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- CTA Section -->
     <section class="py-20 bg-gradient-primary text-white">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-4xl md:text-5xl font-bold mb-6">Ready to Start Trading?</h2>
-            <p class="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-                Join thousands of satisfied customers who trust us for their agricultural import-export needs.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <button class="px-8 py-4 bg-white text-primary hover:bg-white/90 text-lg rounded-md transition-colors">
-                    Request Quote
-                </button>
-                <button class="px-8 py-4 border border-white text-white hover:bg-white/10 text-lg rounded-md transition-colors">
-                    <a href="contact.html" class="text-white no-underline">Contact Us</a>
-                </button>
-            </div>
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6">
+          Ready to Start Trading?
+        </h2>
+        <p class="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
+          Join thousands of satisfied customers who trust us for their
+          agricultural import-export needs.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <button
+            class="px-8 py-3 bg-white text-primary hover:bg-white/90 text-lg rounded-md transition-colors"
+          >
+            Request Quote
+          </button>
+          <button
+            class="px-8 py-3 border border-white text-white hover:bg-white/10 text-lg rounded-md transition-colors"
+          >
+            <a href="contact.html" class="text-white no-underline"
+              >Contact Us</a
+            >
+          </button>
         </div>
+      </div>
     </section>
 
     <!-- Footer -->
     <footer class="bg-primary text-white py-12">
-        <div class="container mx-auto px-4">
-            <div class="grid md:grid-cols-4 gap-8 mb-8">
-                <div>
-                    <div class="flex items-center space-x-2 mb-4">
-                        <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-                            <span class="text-primary font-bold">FV</span>
-                        </div>
-                        <span class="text-xl font-bold">FreshVeggie</span>
-                    </div>
-                    <p class="text-white/80">
-                        Your trusted partner in global agricultural trade, delivering quality and excellence.
-                    </p>
-                </div>
-                
-                <div>
-                    <h4 class="font-semibold mb-4">Products</h4>
-                    <ul class="space-y-2 text-white/80">
-                        <li>Fresh Vegetables</li>
-                        <li>Premium Fruits</li>
-                        <li>Exotic Spices</li>
-                        <li>Organic Products</li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="font-semibold mb-4">Services</h4>
-                    <ul class="space-y-2 text-white/80">
-                        <li>Import Services</li>
-                        <li>Export Solutions</li>
-                        <li>Quality Control</li>
-                        <li>Logistics Support</li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="font-semibold mb-4">Contact</h4>
-                    <ul class="space-y-2 text-white/80">
-                        <li>+1 (555) 123-4567</li>
-                        <li>info@freshveggie.com</li>
-                        <li>123 Trade Center Blvd</li>
-                        <li>New York, NY 10001</li>
-                    </ul>
-                </div>
+      <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-4 gap-8 mb-8">
+          <div>
+            <div class="flex items-center space-x-2 mb-4">
+              <img
+                src="/images/white_logo_horizontal.png"
+                class="w-[140px]"
+                alt="Vanijya Global Exports Logo"
+              />
             </div>
-            
-            <div class="border-t border-white/20 pt-8 text-center">
-                <p class="text-white/60">© 2024 FreshVeggie Import & Export. All rights reserved.</p>
-            </div>
+            <p class="text-white/80">
+              Your trusted partner in global agricultural trade, delivering
+              quality and excellence.
+            </p>
+          </div>
+
+          <div>
+            <h4 class="font-semibold mb-4">Products</h4>
+            <ul class="space-y-2 text-white/80">
+              <li>Fresh Vegetables</li>
+              <li>Premium Fruits</li>
+              <li>Exotic Spices</li>
+              <li>Organic Products</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="font-semibold mb-4">Services</h4>
+            <ul class="space-y-2 text-white/80">
+              <li>Import Services</li>
+              <li>Export Solutions</li>
+              <li>Quality Control</li>
+              <li>Logistics Support</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="font-semibold mb-4">Contact</h4>
+            <ul class="space-y-2 text-white/80">
+              <li>+1 (555) 123-4567</li>
+              <li>info@freshveggie.com</li>
+              <li>123 Trade Center Blvd</li>
+              <li>New York, NY 10001</li>
+            </ul>
+          </div>
         </div>
+
+        <div class="border-t border-white/20 pt-8 text-center">
+          <p class="text-white/60">
+            © 2025 Vanijya Global Exports. All rights reserved.
+          </p>
+        </div>
+      </div>
     </footer>
 
     <script>
-        // Initialize Lucide icons
-        lucide.createIcons();
+      // Initialize Lucide icons
+      lucide.createIcons();
 
-        // Mobile menu toggle
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
+      // Mobile menu toggle
+      const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
 
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('open');
-        });
+      mobileMenuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("open");
+      });
 
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
             });
+          }
         });
+      });
     </script>
-</body>
+  </body>
 </html>
